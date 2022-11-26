@@ -10,7 +10,7 @@ object Main {
         |    public static void main(String args[]){
         |        int abc;
         |        int c = abc;
-        |        System.out.prin@@
+        |        System.out.pri@@ntln();
         |    }
         |}
         |""".stripMargin)

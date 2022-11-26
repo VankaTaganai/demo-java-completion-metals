@@ -19,10 +19,14 @@ class JavaParser {
       List(javaFileObject).asJava
     ).asInstanceOf[JavacTask]
 
-    val root = task.parse().iterator().next()
+    val elems = task.parse()
+    task.analyze()
+    val root = elems.iterator().next()
 
     val curNode = new JavaTreeScanner(task, root).scan(root, cursor)
+    val nodeType = new TypeAnalyzer(task).hoverType(curNode)
 
     println("kind: " + curNode.getLeaf.getKind)
+    println("type: " + nodeType)
   }
 }
